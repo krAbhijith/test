@@ -24,6 +24,13 @@ export const postType = defineType({
       },
       validation: (Rule) => Rule.required(),
     }),
+    defineField({name: 'images', // Field name
+      title: 'Images', // Display name in Studio
+      type: 'array', // Array type for multiple images
+      of: [{ type: 'image' }], // Array of images
+      options: {
+        hotspot: true, // Enable image hotspot for cropping
+      },}),
     defineField({
       name: 'slug',
       type: 'slug',
