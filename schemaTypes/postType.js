@@ -1,4 +1,4 @@
-import {defineField, defineType} from 'sanity'
+import { defineField, defineType } from 'sanity'
 
 export const postType = defineType({
   name: 'post',
@@ -11,9 +11,23 @@ export const postType = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      title: "Type of post",
+      description: "Pick the format of your post",
+      name: "type",
+      type: "string",
+      options: {
+        list: [
+          { title: "Article", value: "article" },
+          { title: "Video", value: "video" },
+          { title: "Podcast", value: "podcast" },
+        ],
+      },
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
       name: 'slug',
       type: 'slug',
-      options: {source: 'title'},
+      options: { source: 'title' },
       validation: (rule) => rule.required(),
     }),
     defineField({
@@ -29,7 +43,7 @@ export const postType = defineType({
     defineField({
       name: 'body',
       type: 'array',
-      of: [{type: 'block'}],
+      of: [{ type: 'block' }],
     }),
   ],
 })
